@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,7 +70,7 @@
                     <connections>
                         <outlet property="emailField" destination="PQi-Iu-wPB" id="aQx-to-LCc"/>
                         <outlet property="passwordField" destination="Jlg-YS-bcD" id="G59-fy-4cS"/>
-                        <segue destination="DEi-eC-wJA" kind="presentation" identifier="LoginSegue" id="uLa-eN-Ujt"/>
+                        <segue destination="DEi-eC-wJA" kind="show" identifier="LoginSegue" id="uLa-eN-Ujt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -81,6 +81,7 @@
         <scene sceneID="Pcb-ue-Igg">
             <objects>
                 <navigationController storyboardIdentifier="HomeFeedNavigationController" id="DEi-eC-wJA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Qxq-2V-2wU"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LxV-JJ-z6N">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
