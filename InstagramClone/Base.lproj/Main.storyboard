@@ -80,7 +80,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Pcb-ue-Igg">
             <objects>
-                <navigationController id="DEi-eC-wJA" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeFeedNavigationController" id="DEi-eC-wJA" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LxV-JJ-z6N">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
