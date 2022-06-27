@@ -77,7 +77,7 @@
             </objects>
             <point key="canvasLocation" x="-606" y="16"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Home-->
         <scene sceneID="BOX-Ht-zl6">
             <objects>
                 <tableViewController id="G4b-iF-ghx" sceneMemberID="viewController">
@@ -100,7 +100,7 @@
                             <outlet property="delegate" destination="G4b-iF-ghx" id="eQl-Jk-r4a"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="up8-KS-BMy"/>
+                    <navigationItem key="navigationItem" title="Home" id="up8-KS-BMy"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R80-xs-wsV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

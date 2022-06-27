@@ -55,29 +55,15 @@
 }
 
 
-
 -(void)lookForEmptyField{
     NSString *username = self.emailField.text;
     NSString *password = self.passwordField.text;
     
     if([username isEqual:@""] || [password isEqual:@""]){
-        /*UIAlertController *alert = [UIAlertController  alertControllerWithTitle:@"Missing field" message:@"One of the fields is empty" preferredStyle:UIAlertControllerStyleAlert];
-        // create a cancel action
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        [alert addAction:cancelAction];
-
-        // create an OK action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        // add the OK action to the alert controller
-        [alert addAction:okAction];
-        [self presentViewController:alert animated:YES completion:nil];*/
         [self alertUser:@"empty"];
     }
 }
+
 
 -(void)alertUser:(NSString *)reason{
     UIAlertController *alert = [[UIAlertController alloc]init];
