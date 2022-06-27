@@ -9,7 +9,7 @@
 
 @interface PhotoMapViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imagePreview;
-
+@property (strong, nonatomic) UIImagePickerController *imagePickerVC;
 @end
 
 @implementation PhotoMapViewController
@@ -17,20 +17,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
+    self.imagePickerVC = [UIImagePickerController new];
+    self.imagePickerVC.delegate = self;
+    self.imagePickerVC.allowsEditing = YES;
 
-    // The Xcode simulator does not support taking pictures, so let's first check that the camera is indeed supported on the device before trying to present it.
+
+}
+
+- (IBAction)tryCameraPicking:(id)sender {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+        self.imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
     else {
         NSLog(@"Camera 🚫 available so we will use photo library instead");
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        self.imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
 
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
+    [self presentViewController:self.imagePickerVC animated:YES completion:nil];
+}
+
+
+- (IBAction)galleryPicking:(id)sender {
+    self.imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:self.imagePickerVC animated:YES completion:nil];
 }
 
 
@@ -41,7 +50,7 @@
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
 
     // Do something with the images (based on your use case)
-    self.imagePreview.image = originalImage;
+    self.imagePreview.image = editedImage;
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
