@@ -21,7 +21,9 @@
 
 
 - (IBAction)didTapLogout:(id)sender {
-    
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        [self dismissViewControllerAnimated:YES completion:^{}];
+    }];
 }
 
 
