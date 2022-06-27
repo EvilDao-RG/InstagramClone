@@ -7,6 +7,7 @@
 
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
+#import "SceneDelegate.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
@@ -30,7 +31,7 @@
         if (error != nil) {
             [self alertUser:@"credentials"];
         } else {
-            [self performSegueWithIdentifier:@"LoginSegue" sender:nil];
+            [self goHome];
         }
     }];
 
@@ -49,9 +50,17 @@
         if (error != nil) {
             [self alertUser:@"credentials"];
         } else {
-            [self performSegueWithIdentifier:@"LoginSegue" sender:nil];
+            [self goHome];
         }
     }];
+}
+
+
+-(void)goHome{
+    [self performSegueWithIdentifier:@"LoginSegue" sender:nil];
+    SceneDelegate *delegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    delegate.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeFeedNavigationController"];
 }
 
 

@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,57 +70,51 @@
                     <connections>
                         <outlet property="emailField" destination="PQi-Iu-wPB" id="aQx-to-LCc"/>
                         <outlet property="passwordField" destination="Jlg-YS-bcD" id="G59-fy-4cS"/>
-                        <segue destination="DEi-eC-wJA" kind="presentation" identifier="LoginSegue" id="uLa-eN-Ujt"/>
+                        <segue destination="DEi-eC-wJA" kind="show" identifier="LoginSegue" id="uLa-eN-Ujt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-606" y="16"/>
         </scene>
-        <!--Home-->
-        <scene sceneID="BOX-Ht-zl6">
-            <objects>
-                <tableViewController id="G4b-iF-ghx" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="K2p-n3-1lo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Uei-3q-Z8E">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uei-3q-Z8E" id="zJT-pC-nF7">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="G4b-iF-ghx" id="giH-qC-Qyx"/>
-                            <outlet property="delegate" destination="G4b-iF-ghx" id="eQl-Jk-r4a"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Home" id="up8-KS-BMy"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R80-xs-wsV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="296" y="735"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Pcb-ue-Igg">
             <objects>
-                <navigationController id="DEi-eC-wJA" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeFeedNavigationController" id="DEi-eC-wJA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Qxq-2V-2wU"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LxV-JJ-z6N">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="G4b-iF-ghx" kind="relationship" relationship="rootViewController" id="Q0Y-Sr-CGP"/>
+                        <segue destination="zs5-sn-YfR" kind="relationship" relationship="rootViewController" id="Imn-Gd-FxH"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ieR-TW-WkR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="296" y="15"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="clL-LY-HaW">
+            <objects>
+                <viewController id="zs5-sn-YfR" customClass="HomeFeedViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cfI-51-z9F">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="av9-n7-Gcn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="FPL-Wt-gHS">
+                        <barButtonItem key="leftBarButtonItem" title="Log out" id="U28-bG-iht">
+                            <connections>
+                                <action selector="didTapLogout:" destination="zs5-sn-YfR" id="6lA-El-9Ev"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Bj-eb-GOO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="296" y="707"/>
         </scene>
     </scenes>
     <resources>
