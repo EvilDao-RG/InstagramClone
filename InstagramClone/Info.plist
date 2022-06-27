@@ -28,6 +28,6 @@
     <key>NSPhotoLibraryUsageDescription</key>
     <string>Need library access to upload images</string>
     <key>NSCameraUsageDescription</key>
-    <string>Need camera access to take pictures</string> 
+    <string>Need camera access to take pictures</string>
 </dict>
 </plist>

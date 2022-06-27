@@ -110,14 +110,52 @@
                                 <action selector="didTapLogout:" destination="zs5-sn-YfR" id="6lA-El-9Ev"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="insta_camera_btn" id="F2e-o3-t43">
+                            <connections>
+                                <segue destination="NN5-J1-xdH" kind="show" id="U80-0u-F40"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Bj-eb-GOO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="296" y="707"/>
         </scene>
+        <!--Photo Map View Controller-->
+        <scene sceneID="MnN-rn-XUJ">
+            <objects>
+                <viewController id="NN5-J1-xdH" customClass="PhotoMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pBU-hk-5iC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n3p-lQ-JC6">
+                                <rect key="frame" x="107" y="86" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="InP-Y2-6Ci"/>
+                                    <constraint firstAttribute="width" constant="200" id="fgR-qq-sFm"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PhY-gq-Oxb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="n3p-lQ-JC6" firstAttribute="centerX" secondItem="PhY-gq-Oxb" secondAttribute="centerX" id="Aoc-oA-uAq"/>
+                            <constraint firstItem="n3p-lQ-JC6" firstAttribute="top" secondItem="PhY-gq-Oxb" secondAttribute="top" constant="30" id="JkS-na-zcO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="1jb-bd-kcq"/>
+                    <connections>
+                        <outlet property="imagePreview" destination="n3p-lQ-JC6" id="FvC-4Z-2fm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vrX-zn-9nn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1166" y="701"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="insta_camera_btn" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
