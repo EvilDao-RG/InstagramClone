@@ -81,12 +81,13 @@
 - (IBAction)didTapPost:(id)sender {
     [Post postImage:self.imagePreview.image withCaption:self.imageCaption.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded){
-            [self performSegueWithIdentifier:@"HomeCompose" sender:nil];
+            [self.navigationController popViewControllerAnimated:YES];
         } else {
             [self errorPostingAlert:error];
         }
     }];
 }
+
 
 -(void)errorPostingAlert:(NSError * _Nullable)error{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error posting" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
