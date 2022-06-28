@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -110,14 +111,98 @@
                                 <action selector="didTapLogout:" destination="zs5-sn-YfR" id="6lA-El-9Ev"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="insta_camera_btn" id="F2e-o3-t43">
+                            <connections>
+                                <segue destination="NN5-J1-xdH" kind="push" identifier="" id="U80-0u-F40"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Bj-eb-GOO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="296" y="707"/>
         </scene>
+        <!--Photo Map View Controller-->
+        <scene sceneID="MnN-rn-XUJ">
+            <objects>
+                <viewController id="NN5-J1-xdH" customClass="PhotoMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pBU-hk-5iC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="n3p-lQ-JC6">
+                                <rect key="frame" x="82" y="86" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="InP-Y2-6Ci"/>
+                                    <constraint firstAttribute="width" constant="250" id="fgR-qq-sFm"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDn-23-i8l">
+                                <rect key="frame" x="283.5" y="356" width="30.5" height="24"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="photo" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="galleryPicking:" destination="NN5-J1-xdH" eventType="touchUpInside" id="3eL-j6-XlQ"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Add some cool description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Ab-zI-aw7">
+                                <rect key="frame" x="87" y="431" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KhL-Qp-4uI">
+                                <rect key="frame" x="100" y="356" width="35" height="26"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button">
+                                    <imageReference key="image" image="camera.on.rectangle" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="tryCameraPicking:" destination="NN5-J1-xdH" eventType="touchUpInside" id="KiD-lx-MNT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PhY-gq-Oxb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="n3p-lQ-JC6" firstAttribute="centerX" secondItem="PhY-gq-Oxb" secondAttribute="centerX" id="Aoc-oA-uAq"/>
+                            <constraint firstItem="XDn-23-i8l" firstAttribute="top" secondItem="n3p-lQ-JC6" secondAttribute="bottom" constant="20" id="BIJ-bq-zdL"/>
+                            <constraint firstItem="n3p-lQ-JC6" firstAttribute="top" secondItem="PhY-gq-Oxb" secondAttribute="top" constant="30" id="JkS-na-zcO"/>
+                            <constraint firstItem="PhY-gq-Oxb" firstAttribute="trailing" secondItem="XDn-23-i8l" secondAttribute="trailing" constant="100" id="K6Q-wN-qDB"/>
+                            <constraint firstItem="XDn-23-i8l" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KhL-Qp-4uI" secondAttribute="trailing" constant="100" id="QZt-jE-KH6"/>
+                            <constraint firstItem="KhL-Qp-4uI" firstAttribute="leading" secondItem="PhY-gq-Oxb" secondAttribute="leading" constant="100" id="nIR-kO-0wc"/>
+                            <constraint firstItem="KhL-Qp-4uI" firstAttribute="top" secondItem="n3p-lQ-JC6" secondAttribute="bottom" constant="20" id="yiV-ha-J4z"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="1jb-bd-kcq">
+                        <barButtonItem key="rightBarButtonItem" title="POST" id="3cw-kX-m9N">
+                            <connections>
+                                <action selector="didTapPost:" destination="NN5-J1-xdH" id="EZ3-ba-i9K"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageCaption" destination="3Ab-zI-aw7" id="nsR-sC-ea0"/>
+                        <outlet property="imagePreview" destination="n3p-lQ-JC6" id="FvC-4Z-2fm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vrX-zn-9nn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1165.217391304348" y="700.44642857142856"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="camera.on.rectangle" catalog="system" width="128" height="96"/>
+        <image name="image_placeholder" width="375" height="375"/>
+        <image name="insta_camera_btn" width="25" height="25"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

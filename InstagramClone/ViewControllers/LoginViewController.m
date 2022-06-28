@@ -57,7 +57,7 @@
 
 
 -(void)goHome{
-    [self performSegueWithIdentifier:@"LoginSegue" sender:nil];
+//    [self performSegueWithIdentifier:@"LoginSegue" sender:nil];
     SceneDelegate *delegate = (SceneDelegate *)self.view.window.windowScene.delegate;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     delegate.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeFeedNavigationController"];
