@@ -8,8 +8,10 @@
 #import "HomeFeedViewController.h"
 #import "Parse/Parse.h"
 #import "SceneDelegate.h"
+#import "PostCell.h"
 
-@interface HomeFeedViewController ()
+@interface HomeFeedViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -30,6 +32,21 @@
 }
 
 
+
+
+
+
+#pragma mark - Table view methods
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.feedPosts count];
+}
 
 
 /*
