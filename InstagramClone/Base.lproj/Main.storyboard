@@ -113,7 +113,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="insta_camera_btn" id="F2e-o3-t43">
                             <connections>
-                                <segue destination="NN5-J1-xdH" kind="show" id="U80-0u-F40"/>
+                                <segue destination="NN5-J1-xdH" kind="push" identifier="" id="U80-0u-F40"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

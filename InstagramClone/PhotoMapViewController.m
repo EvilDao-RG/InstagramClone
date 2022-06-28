@@ -27,6 +27,8 @@
 
 }
 
+#pragma mark - Image selection
+
 - (IBAction)tryCameraPicking:(id)sender {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         self.imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -60,11 +62,6 @@
 }
 
 
-- (IBAction)didTapPost:(id)sender {
-    
-}
-
-
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
     UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     
@@ -77,6 +74,26 @@
     UIGraphicsEndImageContext();
     
     return newImage;
+}
+
+#pragma mark - Posting and alert control
+
+- (IBAction)didTapPost:(id)sender {
+    [Post postImage:self.imagePreview.image withCaption:self.imageCaption.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if(succeeded){
+            [self performSegueWithIdentifier:@"HomeCompose" sender:nil];
+        } else {
+            [self errorPostingAlert:error];
+        }
+    }];
+}
+
+-(void)errorPostingAlert:(NSError * _Nullable)error{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error posting" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 

@@ -10,7 +10,7 @@
 @implementation Post
 
 @dynamic postID;
-@dynamic userID;
+@dynamic author;
 @dynamic caption;
 @dynamic image;
 
@@ -18,9 +18,18 @@
     return @"Post";
 }
 
-+ (void)postImage:(UIImage *)image withCaption:(NSString *)caption withCompletion:(PFBooleanResultBlock  _Nullable)completion{
++ (void)postImage:(UIImage *)image withCaption:(NSString *)caption withCompletion:(void (^)(BOOL succeeded, NSError * error)) completion{
     Post *newPost = [Post new];
     newPost.image = [self getPFFileFromImage:image];
+    newPost.author = [PFUser currentUser];
+    newPost.caption = caption;
+    [newPost saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (error!=nil){
+            completion(false, error);
+        } else {
+            completion(true, nil);
+        }
+    }];
 }
 
 + (PFFileObject *)getPFFileFromImage:(UIImage *)image{
