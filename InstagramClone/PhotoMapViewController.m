@@ -6,9 +6,12 @@
 //
 
 #import "PhotoMapViewController.h"
+#import "Parse/Parse.h"
+#import "Post.h"
 
 @interface PhotoMapViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imagePreview;
+@property (weak, nonatomic) IBOutlet UITextView *imageCaption;
 @property (strong, nonatomic) UIImagePickerController *imagePickerVC;
 @end
 
@@ -46,9 +49,10 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Get the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    // UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-
+    
+    //UIImage *finalImage = [self resizeImage:editedImage withSize:<#(CGSize)#>];
     // Do something with the images (based on your use case)
     self.imagePreview.image = editedImage;
     // Dismiss UIImagePickerController to go back to your original view controller
@@ -56,6 +60,24 @@
 }
 
 
+- (IBAction)didTapPost:(id)sender {
+    
+}
+
+
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
 
 
 

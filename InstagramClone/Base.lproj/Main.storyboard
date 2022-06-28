@@ -147,8 +147,16 @@
                                     <action selector="galleryPicking:" destination="NN5-J1-xdH" eventType="touchUpInside" id="3eL-j6-XlQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KhL-Qp-4uI">
-                                <rect key="frame" x="118" y="356" width="35" height="26"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Add some cool description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Ab-zI-aw7">
+                                <rect key="frame" x="87" y="431" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KhL-Qp-4uI">
+                                <rect key="frame" x="100" y="356" width="35" height="26"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button">
                                     <imageReference key="image" image="camera.on.rectangle" catalog="system" symbolScale="large"/>
@@ -165,13 +173,20 @@
                             <constraint firstItem="XDn-23-i8l" firstAttribute="top" secondItem="n3p-lQ-JC6" secondAttribute="bottom" constant="20" id="BIJ-bq-zdL"/>
                             <constraint firstItem="n3p-lQ-JC6" firstAttribute="top" secondItem="PhY-gq-Oxb" secondAttribute="top" constant="30" id="JkS-na-zcO"/>
                             <constraint firstItem="PhY-gq-Oxb" firstAttribute="trailing" secondItem="XDn-23-i8l" secondAttribute="trailing" constant="100" id="K6Q-wN-qDB"/>
-                            <constraint firstItem="XDn-23-i8l" firstAttribute="leading" secondItem="KhL-Qp-4uI" secondAttribute="trailing" constant="130.5" id="QZt-jE-KH6"/>
-                            <constraint firstItem="KhL-Qp-4uI" firstAttribute="leading" secondItem="PhY-gq-Oxb" secondAttribute="leading" constant="118" id="nIR-kO-0wc"/>
+                            <constraint firstItem="XDn-23-i8l" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KhL-Qp-4uI" secondAttribute="trailing" constant="100" id="QZt-jE-KH6"/>
+                            <constraint firstItem="KhL-Qp-4uI" firstAttribute="leading" secondItem="PhY-gq-Oxb" secondAttribute="leading" constant="100" id="nIR-kO-0wc"/>
                             <constraint firstItem="KhL-Qp-4uI" firstAttribute="top" secondItem="n3p-lQ-JC6" secondAttribute="bottom" constant="20" id="yiV-ha-J4z"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="1jb-bd-kcq"/>
+                    <navigationItem key="navigationItem" id="1jb-bd-kcq">
+                        <barButtonItem key="rightBarButtonItem" title="POST" id="3cw-kX-m9N">
+                            <connections>
+                                <action selector="didTapPost:" destination="NN5-J1-xdH" id="EZ3-ba-i9K"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="imageCaption" destination="3Ab-zI-aw7" id="nsR-sC-ea0"/>
                         <outlet property="imagePreview" destination="n3p-lQ-JC6" id="FvC-4Z-2fm"/>
                     </connections>
                 </viewController>
@@ -185,6 +200,9 @@
         <image name="image_placeholder" width="375" height="375"/>
         <image name="insta_camera_btn" width="25" height="25"/>
         <image name="photo" catalog="system" width="128" height="93"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
