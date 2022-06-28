@@ -6,6 +6,8 @@
 //
 
 #import "PostCell.h"
+#import "Parse/Parse.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation PostCell
 
@@ -20,9 +22,25 @@
     // Configure the view for the selected state
 }
 
-
--(void)setPost{
+-(void)setPost:(Post *)post{
+    _post = post;
     
+    self.captionLabel.text = self.post.caption;
+    self.usernameLabel.text = self.post.author.username;
+    NSURL *imageURL = [NSURL URLWithString: self.post.image.url];
+    [self.image setImageWithURL:imageURL];
 }
+
+
+//-(NSString *)getUsernameFromAuthor:(PFUser *)author{
+//    PFQuery *query = [PFQuery queryWithClassName:@"User"];
+//    [query orderByDescending:@"createdAt"];
+//    [query whereKey:@"objectId" equalTo:author.objectId];
+//    
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *user, NSError *error) {
+//            return user[0][@"username"];
+//    }];
+//    
+//}
 
 @end
