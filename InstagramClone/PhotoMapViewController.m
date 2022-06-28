@@ -32,13 +32,11 @@
 - (IBAction)tryCameraPicking:(id)sender {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         self.imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:self.imagePickerVC animated:YES completion:nil];
     }
     else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
-        self.imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self errorCameraAlert];
     }
-
-    [self presentViewController:self.imagePickerVC animated:YES completion:nil];
 }
 
 
@@ -76,7 +74,7 @@
     return newImage;
 }
 
-#pragma mark - Posting and alert control
+#pragma mark - Posting
 
 - (IBAction)didTapPost:(id)sender {
     [Post postImage:self.imagePreview.image withCaption:self.imageCaption.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
@@ -89,15 +87,30 @@
 }
 
 
+#pragma mark - Alerts
+
 -(void)errorPostingAlert:(NSError * _Nullable)error{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error posting" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
 
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [alert addAction:okAction];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-
+-(void)errorCameraAlert{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Camera not found" message:@"Select a photo from library instead?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:self.imagePickerVC animated:YES completion:nil];
+    }];
+    [alert addAction:okAction];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 /*
 #pragma mark - Navigation
