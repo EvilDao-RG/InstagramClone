@@ -87,6 +87,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     BOOL isDetailSegue = [segue.identifier isEqualToString:@"DetailSegue"];
+    NSLog(@"%d", isDetailSegue);
     if(isDetailSegue){
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
 

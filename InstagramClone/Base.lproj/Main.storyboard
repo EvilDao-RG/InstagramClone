@@ -281,6 +281,7 @@
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dfp-d2-5Rz" customClass="PFImageView">
                                 <rect key="frame" x="0.0" y="56" width="414" height="414"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dfp-d2-5Rz" secondAttribute="height" multiplier="1:1" id="TVG-WR-KOy"/>
                                 </constraints>

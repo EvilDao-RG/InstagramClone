@@ -7,6 +7,8 @@
 
 #import "PostDetailsViewController.h"
 #import "Parse/PFImageView.h"
+#import "UIImageView+AFNetworking.h"
+#import "NSDate+DateTools.h"
 
 @interface PostDetailsViewController ()
 @property (weak, nonatomic) IBOutlet PFImageView *imageView;
@@ -20,7 +22,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setPost:self.post];
+}
+
+-(void)setPost:(Post *)post{
+    _post = post;
+    
+    self.captionLabel.text = self.post.caption;
+    self.usernameLabel.text = self.post.author.username;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"E MMM d HH:mm:ss Z y";
+    dateFormatter.timeStyle = NSDateFormatterNoStyle;
+    dateFormatter.dateStyle = NSDateFormatterShortStyle;
+    
+    self.dateLabel.text = [dateFormatter stringFromDate:self.post.createdAt];
+   // self.dateLabel.text = self.post.createdAt.shortTimeAgoSinceNow;
+    
+    NSURL *imageURL = [NSURL URLWithString: self.post.image.url];
+
+    [self.imageView setImageWithURL:imageURL];
 }
 
 /*
