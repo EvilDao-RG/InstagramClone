@@ -161,7 +161,7 @@
                                             <outlet property="dateLabel" destination="qvv-7B-KKb" id="kXH-ZE-vgP"/>
                                             <outlet property="image" destination="Os2-Mm-WWo" id="Sfz-9d-Dhy"/>
                                             <outlet property="usernameLabel" destination="c8J-Ge-Zme" id="d9i-Eq-cxd"/>
-                                            <segue destination="s3K-Ro-Tbb" kind="show" id="23Z-91-7xT"/>
+                                            <segue destination="s3K-Ro-Tbb" kind="show" identifier="DetailSegue" id="23Z-91-7xT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -279,7 +279,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dfp-d2-5Rz">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dfp-d2-5Rz" customClass="PFImageView">
                                 <rect key="frame" x="0.0" y="56" width="414" height="414"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dfp-d2-5Rz" secondAttribute="height" multiplier="1:1" id="TVG-WR-KOy"/>
@@ -315,6 +315,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3ne-04-VW9"/>
+                    <connections>
+                        <outlet property="captionLabel" destination="BRb-oS-N68" id="0sn-IL-a5K"/>
+                        <outlet property="dateLabel" destination="9w6-Jn-E4j" id="36N-V2-tJN"/>
+                        <outlet property="imageView" destination="dfp-d2-5Rz" id="uWV-ZA-5QB"/>
+                        <outlet property="usernameLabel" destination="rn4-X8-13a" id="ggd-6c-kXM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AO0-4Q-YCp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

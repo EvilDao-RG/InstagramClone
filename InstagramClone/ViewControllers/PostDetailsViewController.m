@@ -6,8 +6,13 @@
 //
 
 #import "PostDetailsViewController.h"
+#import "Parse/PFImageView.h"
 
 @interface PostDetailsViewController ()
+@property (weak, nonatomic) IBOutlet PFImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *captionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
 
