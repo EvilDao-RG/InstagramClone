@@ -214,9 +214,8 @@
                                     <action selector="galleryPicking:" destination="NN5-J1-xdH" eventType="touchUpInside" id="3eL-j6-XlQ"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Add some cool description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Ab-zI-aw7">
-                                <rect key="frame" x="87" y="431" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="Add some cool description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Ab-zI-aw7">
+                                <rect key="frame" x="30" y="411" width="354" height="148"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -241,12 +240,16 @@
                             <constraint firstItem="n3p-lQ-JC6" firstAttribute="top" secondItem="PhY-gq-Oxb" secondAttribute="top" constant="30" id="JkS-na-zcO"/>
                             <constraint firstItem="PhY-gq-Oxb" firstAttribute="trailing" secondItem="XDn-23-i8l" secondAttribute="trailing" constant="100" id="K6Q-wN-qDB"/>
                             <constraint firstItem="XDn-23-i8l" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KhL-Qp-4uI" secondAttribute="trailing" constant="100" id="QZt-jE-KH6"/>
+                            <constraint firstItem="3Ab-zI-aw7" firstAttribute="top" secondItem="n3p-lQ-JC6" secondAttribute="bottom" constant="75" id="RHY-kZ-ANs"/>
+                            <constraint firstItem="PhY-gq-Oxb" firstAttribute="trailing" secondItem="3Ab-zI-aw7" secondAttribute="trailing" constant="30" id="Xbf-ya-Adb"/>
+                            <constraint firstItem="PhY-gq-Oxb" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="3Ab-zI-aw7" secondAttribute="bottom" constant="300" id="kju-Ls-JDe"/>
                             <constraint firstItem="KhL-Qp-4uI" firstAttribute="leading" secondItem="PhY-gq-Oxb" secondAttribute="leading" constant="100" id="nIR-kO-0wc"/>
+                            <constraint firstItem="3Ab-zI-aw7" firstAttribute="leading" secondItem="PhY-gq-Oxb" secondAttribute="leading" constant="30" id="si0-14-tIM"/>
                             <constraint firstItem="KhL-Qp-4uI" firstAttribute="top" secondItem="n3p-lQ-JC6" secondAttribute="bottom" constant="20" id="yiV-ha-J4z"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1jb-bd-kcq">
-                        <barButtonItem key="rightBarButtonItem" title="POST" id="3cw-kX-m9N">
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="3cw-kX-m9N">
                             <connections>
                                 <action selector="didTapPost:" destination="NN5-J1-xdH" id="EZ3-ba-i9K"/>
                             </connections>
