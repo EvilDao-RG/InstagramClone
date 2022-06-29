@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UserProfileViewController : UIViewController
-
+@property (strong, nonatomic) NSArray *userPosts;
 @end
 
 NS_ASSUME_NONNULL_END
