@@ -29,11 +29,6 @@
     
     self.captionLabel.text = self.post.caption;
     self.usernameLabel.text = self.post.author.username;
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"E MMM d HH:mm:ss Z y";
-    
-    //NSDate *date = [dateFormatter stringFromDate:self.post.createdAt];
     self.dateLabel.text = self.post.createdAt.shortTimeAgoSinceNow;
     
     NSURL *imageURL = [NSURL URLWithString: self.post.image.url];
@@ -42,15 +37,5 @@
 }
 
 
-//-(NSString *)getUsernameFromAuthor:(PFUser *)author{
-//    PFQuery *query = [PFQuery queryWithClassName:@"User"];
-//    [query orderByDescending:@"createdAt"];
-//    [query whereKey:@"objectId" equalTo:author.objectId];
-//    
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *user, NSError *error) {
-//            return user[0][@"username"];
-//    }];
-//    
-//}
 
 @end
