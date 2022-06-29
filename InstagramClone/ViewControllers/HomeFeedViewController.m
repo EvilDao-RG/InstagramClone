@@ -23,7 +23,11 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    // Do any additional setup after loading the view.
+    // Pull to refresh set up
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refreshingView:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:refreshControl atIndex:0];
+    
     [self fetchPosts];
 }
 
@@ -44,8 +48,6 @@
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
     
-    
-    
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if(posts != nil){
             self.feedPosts = posts;
@@ -54,12 +56,13 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-    
-    for(Post *object in self.feedPosts){
-        NSLog(@"%@", object.caption);
-    }
 }
 
+// Handles page refreshing
+- (void) refreshingView:(UIRefreshControl *)refreshControl{
+    [self fetchPosts];
+    [refreshControl endRefreshing];
+}
 
 
 #pragma mark - Table view methods

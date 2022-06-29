@@ -214,8 +214,8 @@
                                     <action selector="galleryPicking:" destination="NN5-J1-xdH" eventType="touchUpInside" id="3eL-j6-XlQ"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="Add some cool description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Ab-zI-aw7">
-                                <rect key="frame" x="30" y="411" width="354" height="148"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Add some cool description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Ab-zI-aw7">
+                                <rect key="frame" x="30" y="411" width="354" height="107"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -235,6 +235,7 @@
                         <viewLayoutGuide key="safeArea" id="PhY-gq-Oxb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="PhY-gq-Oxb" firstAttribute="bottom" secondItem="3Ab-zI-aw7" secondAttribute="bottom" constant="324" id="5hD-Gn-O6w"/>
                             <constraint firstItem="n3p-lQ-JC6" firstAttribute="centerX" secondItem="PhY-gq-Oxb" secondAttribute="centerX" id="Aoc-oA-uAq"/>
                             <constraint firstItem="XDn-23-i8l" firstAttribute="top" secondItem="n3p-lQ-JC6" secondAttribute="bottom" constant="20" id="BIJ-bq-zdL"/>
                             <constraint firstItem="n3p-lQ-JC6" firstAttribute="top" secondItem="PhY-gq-Oxb" secondAttribute="top" constant="30" id="JkS-na-zcO"/>
@@ -242,7 +243,6 @@
                             <constraint firstItem="XDn-23-i8l" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KhL-Qp-4uI" secondAttribute="trailing" constant="100" id="QZt-jE-KH6"/>
                             <constraint firstItem="3Ab-zI-aw7" firstAttribute="top" secondItem="n3p-lQ-JC6" secondAttribute="bottom" constant="75" id="RHY-kZ-ANs"/>
                             <constraint firstItem="PhY-gq-Oxb" firstAttribute="trailing" secondItem="3Ab-zI-aw7" secondAttribute="trailing" constant="30" id="Xbf-ya-Adb"/>
-                            <constraint firstItem="PhY-gq-Oxb" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="3Ab-zI-aw7" secondAttribute="bottom" constant="300" id="kju-Ls-JDe"/>
                             <constraint firstItem="KhL-Qp-4uI" firstAttribute="leading" secondItem="PhY-gq-Oxb" secondAttribute="leading" constant="100" id="nIR-kO-0wc"/>
                             <constraint firstItem="3Ab-zI-aw7" firstAttribute="leading" secondItem="PhY-gq-Oxb" secondAttribute="leading" constant="30" id="si0-14-tIM"/>
                             <constraint firstItem="KhL-Qp-4uI" firstAttribute="top" secondItem="n3p-lQ-JC6" secondAttribute="bottom" constant="20" id="yiV-ha-J4z"/>
