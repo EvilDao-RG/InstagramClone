@@ -8,6 +8,8 @@
 #import "PostCell.h"
 #import "Parse/Parse.h"
 #import "UIImageView+AFNetworking.h"
+#import "NSDate+DateTools.h"
+
 
 @implementation PostCell
 
@@ -27,7 +29,15 @@
     
     self.captionLabel.text = self.post.caption;
     self.usernameLabel.text = self.post.author.username;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"E MMM d HH:mm:ss Z y";
+    
+    //NSDate *date = [dateFormatter stringFromDate:self.post.createdAt];
+    self.dateLabel.text = self.post.createdAt.shortTimeAgoSinceNow;
+    
     NSURL *imageURL = [NSURL URLWithString: self.post.image.url];
+
     [self.image setImageWithURL:imageURL];
 }
 

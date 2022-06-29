@@ -8,6 +8,8 @@ target 'InstagramClone' do
   # Pods for InstagramClone
   pod 'Parse'
   pod 'AFNetworking'
+  pod 'DateTools'
+
 
   target 'InstagramCloneTests' do
     inherit! :search_paths
