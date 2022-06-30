@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *collectionViewLayout;
-
 @end
 
 @implementation UserProfileViewController
@@ -24,6 +23,13 @@
     [super viewDidLoad];
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
+    // Refresh control setup
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refreshingView:) forControlEvents:UIControlEventValueChanged];
+    [self.collectionView addSubview:refreshControl];
+    self.collectionView.alwaysBounceVertical = YES;
+
+    
     [self setUserData];
     [self fetchUserPosts];
 }
@@ -54,6 +60,12 @@
 }
 
 
+// Handles screen refreshing
+- (void) refreshingView:(UIRefreshControl *)refreshControl{
+    [self fetchUserPosts];
+    [refreshControl endRefreshing];
+}
+
 #pragma mark - Collection view methods
 
 // Assigns the numer of items in the collection
@@ -68,7 +80,7 @@
     return cell;
 }
 
-//Changing collectio view flow layout
+//Changing collection view flow layout
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
   
     self.collectionViewLayout.minimumLineSpacing = 0;
