@@ -29,11 +29,11 @@
             </objects>
             <point key="canvasLocation" x="364" y="15"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="rvL-MT-Ko5">
             <objects>
                 <navigationController id="4WB-GK-Hat" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="MBe-gS-JjF"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile_tab" selectedImage="profile_tab" id="MBe-gS-JjF"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rsx-CR-1QT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -115,11 +115,11 @@
             </objects>
             <point key="canvasLocation" x="-606" y="16"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="Pcb-ue-Igg">
             <objects>
                 <navigationController storyboardIdentifier="HomeFeedNavigationController" id="DEi-eC-wJA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="AGf-4g-sTX"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="feed_tab" selectedImage="feed_tab" id="AGf-4g-sTX"/>
                     <navigationItem key="navigationItem" id="Qxq-2V-2wU"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LxV-JJ-z6N">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -372,6 +372,7 @@
                     <connections>
                         <outlet property="collectionView" destination="ylv-m2-E8j" id="Oqe-Jq-xcx"/>
                         <outlet property="collectionViewLayout" destination="4Uy-sB-0V0" id="1it-c9-U3s"/>
+                        <outlet property="profilePicture" destination="E2O-Zm-6RR" id="nIY-Z4-GJo"/>
                         <outlet property="usernameLabel" destination="xlU-wk-uQu" id="5Up-tq-bF5"/>
                     </connections>
                 </viewController>
@@ -443,13 +444,15 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="vcW-eC-0CL"/>
+        <segue reference="23Z-91-7xT"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.on.rectangle" catalog="system" width="128" height="96"/>
+        <image name="feed_tab" width="25" height="25"/>
         <image name="image_placeholder" width="375" height="375"/>
         <image name="insta_camera_btn" width="25" height="25"/>
         <image name="photo" catalog="system" width="128" height="93"/>
+        <image name="profile_tab" width="25" height="25"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
