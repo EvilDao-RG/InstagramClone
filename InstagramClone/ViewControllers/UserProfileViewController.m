@@ -71,6 +71,7 @@
 
 // Handles screen refreshing
 - (void) refreshingView:(UIRefreshControl *)refreshControl{
+    [self setUserData];
     [self fetchUserPosts];
     [refreshControl endRefreshing];
 }
@@ -118,5 +119,7 @@
         
     }
 }
+
+
 
 @end

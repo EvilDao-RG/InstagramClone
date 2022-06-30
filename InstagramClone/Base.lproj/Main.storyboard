@@ -311,7 +311,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E2O-Zm-6RR">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E2O-Zm-6RR">
                                 <rect key="frame" x="20" y="82" width="128" height="128"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
@@ -357,13 +357,24 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQR-cv-ZWA">
+                                <rect key="frame" x="164" y="150" width="230" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Edit Profile"/>
+                                <connections>
+                                    <segue destination="Swh-5x-k1m" kind="presentation" id="GAT-rB-DRo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uM2-SG-3e8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="PQR-cv-ZWA" firstAttribute="leading" secondItem="E2O-Zm-6RR" secondAttribute="trailing" constant="16" id="E0Q-8q-qKH"/>
                             <constraint firstItem="E2O-Zm-6RR" firstAttribute="leading" secondItem="uM2-SG-3e8" secondAttribute="leading" constant="20" id="J7R-y4-aSj"/>
                             <constraint firstItem="E2O-Zm-6RR" firstAttribute="top" secondItem="uM2-SG-3e8" secondAttribute="top" constant="26" id="KEt-j3-PsL"/>
                             <constraint firstItem="xlU-wk-uQu" firstAttribute="top" secondItem="uM2-SG-3e8" secondAttribute="top" constant="45" id="Vcm-Pr-SVS"/>
+                            <constraint firstItem="PQR-cv-ZWA" firstAttribute="top" secondItem="xlU-wk-uQu" secondAttribute="bottom" constant="20" id="aMh-lx-De4"/>
+                            <constraint firstItem="uM2-SG-3e8" firstAttribute="trailing" secondItem="PQR-cv-ZWA" secondAttribute="trailing" constant="20" id="ivs-bv-iA9"/>
                             <constraint firstItem="uM2-SG-3e8" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xlU-wk-uQu" secondAttribute="trailing" constant="20" id="uWW-8t-h6Z"/>
                             <constraint firstItem="xlU-wk-uQu" firstAttribute="leading" secondItem="E2O-Zm-6RR" secondAttribute="trailing" constant="16" id="y25-Nb-4hq"/>
                         </constraints>
@@ -379,6 +390,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xFh-Nw-Vcc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1582.608695652174" y="1437.7232142857142"/>
+        </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="cmd-4w-7Ez">
+            <objects>
+                <viewController id="Swh-5x-k1m" customClass="EditProfileViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MJA-A2-hSh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vx2-Cl-uah">
+                                <rect key="frame" x="87" y="120" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="ZhH-MQ-qDJ"/>
+                                    <constraint firstAttribute="width" constant="240" id="e68-7g-43r"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPB-aV-hKO">
+                                <rect key="frame" x="87" y="394" width="52" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="camera.on.rectangle" catalog="system"/>
+                                <connections>
+                                    <action selector="tryCameraPicking:" destination="Swh-5x-k1m" eventType="touchUpInside" id="4HP-hd-Zq8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BwB-5g-loe">
+                                <rect key="frame" x="277" y="394" width="50" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="photo" catalog="system"/>
+                                <connections>
+                                    <action selector="tryGalleryPicking:" destination="Swh-5x-k1m" eventType="touchUpInside" id="24P-Ts-lcT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xZL-NS-GE1">
+                                <rect key="frame" x="333" y="20" width="56" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="didTapSave:" destination="Swh-5x-k1m" eventType="touchUpInside" id="zPu-Rc-XIb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="UiQ-YT-K77"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UiQ-YT-K77" firstAttribute="trailing" secondItem="BwB-5g-loe" secondAttribute="trailing" constant="87" id="0s7-ZL-46I"/>
+                            <constraint firstItem="Vx2-Cl-uah" firstAttribute="top" secondItem="UiQ-YT-K77" secondAttribute="top" constant="76" id="FPv-Ow-44l"/>
+                            <constraint firstItem="Vx2-Cl-uah" firstAttribute="centerX" secondItem="UiQ-YT-K77" secondAttribute="centerX" id="QYq-kU-PPx"/>
+                            <constraint firstItem="xPB-aV-hKO" firstAttribute="top" secondItem="Vx2-Cl-uah" secondAttribute="bottom" constant="34" id="W8C-9H-WTi"/>
+                            <constraint firstItem="xPB-aV-hKO" firstAttribute="leading" secondItem="UiQ-YT-K77" secondAttribute="leading" constant="87" id="gQb-UZ-k9O"/>
+                            <constraint firstItem="BwB-5g-loe" firstAttribute="top" secondItem="Vx2-Cl-uah" secondAttribute="bottom" constant="34" id="gk2-WM-TMe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imagePreview" destination="Vx2-Cl-uah" id="qzq-Ep-Ge6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="59b-8H-3bQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2443" y="1438"/>
         </scene>
         <!--Post Details View Controller-->
         <scene sceneID="oLy-ec-ouk">
@@ -444,7 +515,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="23Z-91-7xT"/>
+        <segue reference="vcW-eC-0CL"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.on.rectangle" catalog="system" width="128" height="96"/>
