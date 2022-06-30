@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *usernameTopLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *authorProfilePicture;
 
 @end
 
@@ -30,16 +32,21 @@
     
     self.captionLabel.text = self.post.caption;
     self.usernameLabel.text = self.post.author.username;
+    self.usernameTopLabel.text = self.post.author.username;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"E MMM d HH:mm:ss Z y";
     dateFormatter.timeStyle = NSDateFormatterNoStyle;
     dateFormatter.dateStyle = NSDateFormatterShortStyle;
     
     self.dateLabel.text = [dateFormatter stringFromDate:self.post.createdAt];
-   // self.dateLabel.text = self.post.createdAt.shortTimeAgoSinceNow;
+    
+    if(self.post.author[@"profilePicture"]){
+        PFFileObject *image = self.post.author[@"profilePicture"];
+        NSURL *profilePictureUrl = [NSURL URLWithString:image.url];
+        [self.authorProfilePicture setImageWithURL:profilePictureUrl];
+    }
     
     NSURL *imageURL = [NSURL URLWithString: self.post.image.url];
-
     [self.imageView setImageWithURL:imageURL];
 }
 
