@@ -10,9 +10,11 @@
 #import "UserProfilePostCell.h"
 #import "Post.h"
 #import "PostDetailsViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface UserProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *profilePicture;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *collectionViewLayout;
 @end
@@ -40,6 +42,13 @@
 -(void)setUserData{
     PFUser *currentUser = [PFUser currentUser];
     self.usernameLabel.text = currentUser.username;
+    // Setting profile picture (if there's one)
+    if(currentUser[@"profilePicture"]){
+        PFFileObject *file = currentUser[@"profilePicture"];
+        NSURL *imageURL = [NSURL URLWithString: file.url];
+
+        [self.profilePicture setImageWithURL:imageURL];
+    }
 }
 
 
@@ -62,6 +71,7 @@
 
 // Handles screen refreshing
 - (void) refreshingView:(UIRefreshControl *)refreshControl{
+    [self setUserData];
     [self fetchUserPosts];
     [refreshControl endRefreshing];
 }
@@ -109,5 +119,7 @@
         
     }
 }
+
+
 
 @end

@@ -30,6 +30,13 @@
     self.captionLabel.text = self.post.caption;
     self.usernameLabel.text = self.post.author.username;
     self.dateLabel.text = self.post.createdAt.shortTimeAgoSinceNow;
+    self.usernameTopLabel.text = self.post.author.username;
+    
+    if(self.post.author[@"profilePicture"]){
+        PFFileObject *image = self.post.author[@"profilePicture"];
+        NSURL *profilePictureUrl = [NSURL URLWithString:image.url];
+        [self.authorProfilePicture setImageWithURL:profilePictureUrl];
+    }
     
     NSURL *imageURL = [NSURL URLWithString: self.post.image.url];
 

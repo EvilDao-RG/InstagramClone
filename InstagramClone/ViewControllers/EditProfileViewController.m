@@ -1,21 +1,20 @@
 //
-//  PhotoMapViewController.m
+//  EditProfileViewController.m
 //  InstagramClone
 //
-//  Created by Gael Rodriguez Gomez on 6/27/22.
+//  Created by Gael Rodriguez Gomez on 6/30/22.
 //
 
-#import "PhotoMapViewController.h"
+#import "EditProfileViewController.h"
 #import "Parse/Parse.h"
 #import "Post.h"
 
-@interface PhotoMapViewController ()
+@interface EditProfileViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imagePreview;
-@property (weak, nonatomic) IBOutlet UITextView *imageCaption;
 @property (strong, nonatomic) UIImagePickerController *imagePickerVC;
 @end
 
-@implementation PhotoMapViewController
+@implementation EditProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,6 +28,7 @@
 
 #pragma mark - Image selection
 
+
 - (IBAction)tryCameraPicking:(id)sender {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         self.imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -39,8 +39,7 @@
     }
 }
 
-
-- (IBAction)galleryPicking:(id)sender {
+- (IBAction)tryGalleryPicking:(id)sender {
     self.imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     [self presentViewController:self.imagePickerVC animated:YES completion:nil];
 }
@@ -57,28 +56,35 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - Posting
+#pragma mark - Saving profile picture
 
-- (IBAction)didTapPost:(id)sender {
-    [Post postImage:self.imagePreview.image withCaption:self.imageCaption.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if(succeeded){
-            [self.navigationController popViewControllerAnimated:YES];
-        } else {
-            [self errorPostingAlert:error];
-        }
-    }];
+- (IBAction)didTapSave:(id)sender {
+
+    if(self.imagePreview.image!=nil){
+        PFUser *currentUser = [PFUser currentUser];
+        currentUser[@"profilePicture"] = [self getPFFileFromImage:self.imagePreview.image];
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [currentUser saveInBackground];
+    }
+
+    
+}
+
+-(PFFileObject *)getPFFileFromImage:(UIImage *)image{
+    if(!image){
+        return nil;
+    }
+    NSData *imageData = UIImagePNGRepresentation(image);
+    // get image data and check if that is not nil
+    if (!imageData) {
+        return nil;
+    }
+    
+    return [PFFileObject fileObjectWithName:@"image.png" data:imageData];
 }
 
 
 #pragma mark - Alerts
-
--(void)errorPostingAlert:(NSError * _Nullable)error{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error posting" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-    [alert addAction:okAction];
-    [self presentViewController:alert animated:YES completion:nil];
-}
 
 -(void)errorCameraAlert{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Camera not found" message:@"Select a photo from library instead?" preferredStyle:UIAlertControllerStyleAlert];
@@ -94,7 +100,6 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 }
-
 /*
 #pragma mark - Navigation
 
