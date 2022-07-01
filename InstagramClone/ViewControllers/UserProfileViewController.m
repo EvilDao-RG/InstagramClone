@@ -63,7 +63,7 @@
             self.userPosts = posts;
             [self.collectionView reloadData];
         } else {
-            NSLog(@"%@", error.localizedDescription);
+            [self errorFetchingAlert:error];
         }
     }];
 }
@@ -105,12 +105,23 @@
 }
 
 
+#pragma mark - Alerts
+
+-(void)errorFetchingAlert:(NSError * _Nullable)error{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error fetching data" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     BOOL isDetailSegue = [segue.identifier isEqualToString:@"ProfileToDetailSegue"];
-    NSLog(@"%d", isDetailSegue);
     if(isDetailSegue){
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
 
@@ -119,7 +130,6 @@
         
     }
 }
-
 
 
 @end

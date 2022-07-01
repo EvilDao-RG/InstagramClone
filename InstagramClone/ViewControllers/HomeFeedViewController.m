@@ -54,7 +54,7 @@
             self.feedPosts = posts;
             [self.tableView reloadData];
         } else {
-            NSLog(@"%@", error.localizedDescription);
+            [self errorFecthing:error];
         }
     }];
 }
@@ -83,11 +83,22 @@
 
 
 
+#pragma mark - Alerts
+
+-(void)errorFecthing:(NSError * _Nullable)error{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error fetching data" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     BOOL isDetailSegue = [segue.identifier isEqualToString:@"DetailSegue"];
-    NSLog(@"%d", isDetailSegue);
     if(isDetailSegue){
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
 
